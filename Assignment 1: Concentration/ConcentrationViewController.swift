@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConcentrationViewController: UIViewController {
     /// all of the possible themes, including emojis and colors
     private let gameThemeChoices = [(["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"], #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)),
                                     (["🚗", "🚌", "🏎", "🚓", "🚑", "🚒", "🚜", "🛵", "🏍"], #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1), #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)),
@@ -20,11 +20,13 @@ class ViewController: UIViewController {
     /// the game model
     private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     /// the emoji choices for a single particular game
-    private var emojiChoices = [String]()
+    var emojiChoices = [String]()
+    /// the emoji choices for a single particular game
+    var emojiChoicesMaster = [String]() { didSet { emojiChoices = emojiChoicesMaster } }
     /// the card color for the single particular game
-    private var cardColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+    var cardColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
     /// the background color for the single particular game
-    private var backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    var backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     
     /// the emoji dictionary; which card goes to which emoji
     private var emojiDict = [Card: String]()
@@ -80,11 +82,11 @@ class ViewController: UIViewController {
         emojiDict.removeAll()
         
         // generate a new random game theme
-        let randomIndex = gameThemeChoices.count.arc4random
-        emojiChoices = gameThemeChoices[randomIndex].0
-        cardColor = gameThemeChoices[randomIndex].1
-        backgroundColor = gameThemeChoices[randomIndex].2
-        
+//        let randomIndex = gameThemeChoices.count.arc4random
+//        emojiChoices = gameThemeChoices[randomIndex].0
+//        cardColor = gameThemeChoices[randomIndex].1
+//        backgroundColor = gameThemeChoices[randomIndex].2
+        emojiChoices = emojiChoicesMaster
         mainView.backgroundColor = backgroundColor
         scoreLabel.backgroundColor = backgroundColor
         flipCountLabel.backgroundColor = backgroundColor
