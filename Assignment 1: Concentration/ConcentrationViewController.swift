@@ -10,10 +10,7 @@ import UIKit
 
 class ConcentrationViewController: UIViewController {
     /// all of the possible themes, including emojis and colors
-    private let gameThemeChoices = [(["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"], #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1), #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)),
-                                    (["🚗", "🚌", "🏎", "🚓", "🚑", "🚒", "🚜", "🛵", "🏍"], #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1), #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)),
-                                    (["🐶", "🐱", "🐹", "🐰", "🦊", "🐻", "🐨", "🦁", "🐸", "🐒", "🦆"], #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), #colorLiteral(red: 0.6679978967, green: 0.4751212597, blue: 0.2586010993, alpha: 1)),
-                                    (["🍎", "🍊", "🍋", "🍌", "🍉", "🍓", "🍒", "🥝", "🥑", "🌶"], #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)),
+    private let gameThemeChoices = [(["🐶", "🐱", "🐹", "🐰", "🦊", "🐻", "🐨", "🦁", "🐸", "🐒", "🦆"], #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), #colorLiteral(red: 0.6679978967, green: 0.4751212597, blue: 0.2586010993, alpha: 1)),
                                     (["⌚️", "📱", "💻", "⌨️", "🖥", "🖨", "💾", "💿", "📷"], #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)),
                                     (["🥨", "🍞", "🧀", "🥓", "🥩", "🍕", "🍔", "🌭", "🍟", "🌮"], #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1), #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1))]
     
@@ -22,11 +19,12 @@ class ConcentrationViewController: UIViewController {
     /// the emoji choices for a single particular game
     var emojiChoices = [String]()
     /// the emoji choices for a single particular game
-    var emojiChoicesMaster = [String]() { didSet { emojiChoices = emojiChoicesMaster } }
+    var emojiChoicesMaster = ["🐶", "🐱", "🐹", "🐰", "🦊", "🐻", "🐨", "🦁", "🐸", "🐒", "🦆"] {
+        didSet { emojiChoices = emojiChoicesMaster } }
     /// the card color for the single particular game
-    var cardColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+    var cardColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
     /// the background color for the single particular game
-    var backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    var backgroundColor = #colorLiteral(red: 0.6679978967, green: 0.4751212597, blue: 0.2586010993, alpha: 1)
     
     /// the emoji dictionary; which card goes to which emoji
     private var emojiDict = [Card: String]()
@@ -70,7 +68,6 @@ class ConcentrationViewController: UIViewController {
     /// initialize the model after the view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         restartGame()
     }
     
@@ -81,11 +78,6 @@ class ConcentrationViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
         emojiDict.removeAll()
         
-        // generate a new random game theme
-//        let randomIndex = gameThemeChoices.count.arc4random
-//        emojiChoices = gameThemeChoices[randomIndex].0
-//        cardColor = gameThemeChoices[randomIndex].1
-//        backgroundColor = gameThemeChoices[randomIndex].2
         emojiChoices = emojiChoicesMaster
         mainView.backgroundColor = backgroundColor
         scoreLabel.backgroundColor = backgroundColor
