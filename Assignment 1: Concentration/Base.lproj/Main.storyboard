@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mBe-e1-7Rm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cek-6k-YHj">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CvM-iK-Q0u">
-                                <rect key="frame" x="108.5" y="339" width="103" height="160"/>
+                                <rect key="frame" x="108.5" y="314" width="103" height="160"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8S-13-KjD">
                                         <rect key="frame" x="20.5" y="0.0" width="62" height="48"/>
@@ -62,10 +62,11 @@
             </objects>
             <point key="canvasLocation" x="563.768115942029" y="164.73214285714286"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Concentration-->
         <scene sceneID="tBo-hl-fkl">
             <objects>
                 <splitViewController id="mBe-e1-7Rm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Concentration" id="eZ8-sn-Lg8"/>
                     <connections>
                         <segue destination="FcC-eU-qvJ" kind="relationship" relationship="masterViewController" id="BDT-JX-790"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="Kmi-Of-aFj"/>
@@ -74,6 +75,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jz6-gD-7hG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-458" y="982"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="mSW-vk-xfi">
+            <objects>
+                <viewController id="6lD-hs-XBp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Orn-By-gZK">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rs6-AJ-aGm"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="48I-d6-2Bh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AA7-q6-nDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="481" y="2407"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="Phd-eX-VZi">
+            <objects>
+                <viewController id="8aq-jh-vny" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wGI-fP-fhk">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2E5-EJ-rEk"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="cxK-lm-4PO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JhK-j6-jj0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="481" y="1750"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="25M-Y2-Q2g">
+            <objects>
+                <tabBarController id="Cek-6k-YHj" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="apX-On-b29">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="mBe-e1-7Rm" kind="relationship" relationship="viewControllers" id="eDm-yN-x6F"/>
+                        <segue destination="8aq-jh-vny" kind="relationship" relationship="viewControllers" id="JTM-VQ-FqX"/>
+                        <segue destination="6lD-hs-XBp" kind="relationship" relationship="viewControllers" id="mLb-UM-Iuw"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eZL-oZ-HvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-246" y="2078"/>
         </scene>
         <!--Concentration View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -244,7 +296,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQE-Yd-To1">
-                                <rect key="frame" x="276" y="700" width="152" height="48"/>
+                                <rect key="frame" x="276" y="650" width="152" height="48"/>
                                 <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <state key="normal" title="New Game">
@@ -331,6 +383,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dVh-wx-VAL"/>
+        <segue reference="Kmi-Of-aFj"/>
     </inferredMetricsTieBreakers>
 </document>
