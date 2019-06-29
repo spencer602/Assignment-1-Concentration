@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConcentrationViewController: UIViewController {
+class ConcentrationViewController: UIViewController, UISplitViewControllerDelegate {
     /// all of the possible themes, including emojis and colors
     private let gameThemeChoices = [(["🐶", "🐱", "🐹", "🐰", "🦊", "🐻", "🐨", "🦁", "🐸", "🐒", "🦆"], #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), #colorLiteral(red: 0.6679978967, green: 0.4751212597, blue: 0.2586010993, alpha: 1)),
                                     (["⌚️", "📱", "💻", "⌨️", "🖥", "🖨", "💾", "💿", "📷"], #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)),
@@ -19,8 +19,8 @@ class ConcentrationViewController: UIViewController {
     /// the emoji choices for a single particular game
     var emojiChoices = [String]()
     /// the emoji choices for a single particular game
-    var emojiChoicesMaster = ["🐶", "🐱", "🐹", "🐰", "🦊", "🐻", "🐨", "🦁", "🐸", "🐒", "🦆"] {
-        didSet { emojiChoices = emojiChoicesMaster } }
+    var emojiChoicesMaster: [String]? {
+        didSet { if emojiChoicesMaster != nil { emojiChoices = emojiChoicesMaster! } } }
     /// the card color for the single particular game
     var cardColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
     /// the background color for the single particular game
@@ -71,6 +71,17 @@ class ConcentrationViewController: UIViewController {
         restartGame()
     }
     
+    override func awakeFromNib() {
+        splitViewController?.delegate = self
+    }
+    
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        if let cvc = secondaryViewController as? ConcentrationViewController {
+            if cvc.emojiChoicesMaster == nil { return true }
+        }
+        return false
+    }
+    
     /// restarts the game: restarts the model, resets the vars in the controller
     private func restartGame() {
         // remember to invalidate the timer while we still have a reference to it
@@ -78,7 +89,8 @@ class ConcentrationViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
         emojiDict.removeAll()
         
-        emojiChoices = emojiChoicesMaster
+        if emojiChoicesMaster != nil { emojiChoices = emojiChoicesMaster! }
+        
         mainView.backgroundColor = backgroundColor
         scoreLabel.backgroundColor = backgroundColor
         flipCountLabel.backgroundColor = backgroundColor
